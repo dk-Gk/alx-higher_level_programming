@@ -10,4 +10,4 @@ def remove_char_at(str, n):
             continue
         str_copy += str[z]
         z += 1
-        return str_copy
+    return str_copy

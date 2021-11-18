@@ -28,6 +28,12 @@ while (current->next != NULL)
 {
 if (current->n > new->n)
 {
+	if (current == *head)
+	{
+		new->next = current;
+		*head = new;
+		return (new);
+	}
 while (temp->next != current)
 temp = temp->next;
 temp->next = new;

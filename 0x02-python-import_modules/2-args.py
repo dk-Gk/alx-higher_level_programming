@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     import sys
+
     a = len(sys.argv)
     if (a == 2):
         print("1 arument:")

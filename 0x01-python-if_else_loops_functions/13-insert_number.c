@@ -6,7 +6,6 @@
  * @number: number to be inserted
  * Return: the address of the new node, or NULL if it failed
  */
-
 listint_t *insert_node(listint_t **head, int number)
 {
 listint_t *new;
@@ -29,11 +28,6 @@ while (current->next != NULL)
 {
 if (current->n > new->n)
 {
-if (current == *head)
-{
-new->next = current;
-*head = new;
-}
 while (temp->next != current)
 temp = temp->next;
 temp->next = new;
@@ -42,8 +36,16 @@ return (new);
 }
 current = current->next;
 }
+if (current->n > new->n)
+{
+new->next = current;
+*head = new;
+}
+else
+{
 current->next = new;
 new->next = NULL;
+}
 }
 return (new);
 }

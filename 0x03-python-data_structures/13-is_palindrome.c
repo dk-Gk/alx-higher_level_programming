@@ -13,10 +13,15 @@ listint_t *temp2;
 temp2 = *head;
 int arr[9999];
 int i = 0, count = 0, j;
-if (*head == NULL)
+if ((!*head) || (!head))
 {
-return (1);
+	return (1);
 }
+if (!temp2->next)
+{
+	return (1);
+}
+
 while (temp2->next != NULL)
 {
 arr[i] = temp2->n;

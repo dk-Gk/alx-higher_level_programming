@@ -9,34 +9,31 @@
 int is_palindrome(listint_t **head)
 {
 
-listint_t *h, *temp2, *p;
+listint_t *temp2;
 temp2 = *head;
-h = *head;
-p = *head;
+int arr[100];
+int i = 0, count = 0, j;
 if (*head == NULL)
 {
 return (1);
 }
 while (temp2->next != NULL)
 {
+arr[i] = temp2->n;
 temp2 = temp2->next;
+i++;
+count++;
 }
-while (h != temp2)
+arr[i] = temp2->n;
+count++;
+j = count - 1;
+for (i = 0; i < count; i++)
 {
-if (h->n != temp2->n)
+if (arr[i] != arr[j])
 {
 return (0);
 }
-else
-{
-while (p->next != temp2 && p != temp2)
-{
-p = p->next;
-}
-h = h->next;
-temp2 = p;
-p = h->next;
-}
+j--;
 }
 return (1);
 }

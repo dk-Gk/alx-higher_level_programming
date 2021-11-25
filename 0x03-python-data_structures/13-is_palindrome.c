@@ -11,8 +11,7 @@ int is_palindrome(listint_t **head)
 
 listint_t *temp2;
 temp2 = *head;
-int arr[9999];
-int i = 0, count = 0, j;
+int arr[9999], i = 0, count = 0, j;
 if ((!*head) || (!head))
 {
 return (1);

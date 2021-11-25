@@ -1,7 +1,17 @@
 #!/usr/bin/python3
-multiply_list_map = __import__('11-multiply_list_map').multiply_list_map
+update_dictionary = __import__('7-update_dictionary').update_dictionary
+print_sorted_dictionary = __import__('6-print_sorted_dictionary').print_sorted_dictionary
 
-my_list = [1, 2, 3, 4, 6]
-new_list = multiply_list_map(my_list, 4)
-print(new_list)
-print(my_list)
+a_dictionary = { 'language': "C", 'number': 89, 'track': "Low level" }
+new_dict = update_dictionary(a_dictionary, 'language', "Python")
+print_sorted_dictionary(new_dict)
+print("--")
+print_sorted_dictionary(a_dictionary)
+
+print("--")
+print("--")
+
+new_dict = update_dictionary(a_dictionary, 'city', "San Francisco")
+print_sorted_dictionary(new_dict)
+print("--")
+print_sorted_dictionary(a_dictionary)

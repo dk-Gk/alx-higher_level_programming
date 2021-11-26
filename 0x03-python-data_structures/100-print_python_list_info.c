@@ -12,7 +12,7 @@ int i, mem;
 PyObject *obj;
 mem = ((PyListObject *)p)->allocated;
 printf("[*] Size of the Python List = %ld\n", Py_SIZE(p));
-printf("[*] Allocated = %ld\n", mem);
+printf("[*] Allocated = %i\n", mem);
 for (i = 0; i < Py_SIZE(p); i++)
 {
 obj = PyList_GetItem(p, i);

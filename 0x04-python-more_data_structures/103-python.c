@@ -12,7 +12,7 @@ PyVarObject *s;
 PyListObject *list;
 s = (PyVarObject *)p;
 list = (PyListObject *)p;
-size = var->ob_size;
+size = s->ob_size;
 mem = list->allocated;
 
 printf("[*] Python list info\n");

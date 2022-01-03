@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """class Base"""
 import json
-
+import csv
+import turtle
 
 class Base:
     """Base"""
@@ -57,5 +58,63 @@ class Base:
         """returns a list of instances"""
 
         fname = cls.__name__ + ".json"
-        with open(fname) as f:
-            return json.load(f)
+        d = []
+        try:
+            with open(fname) as f:
+                d = cls.from_json_string(f.read())
+            for key, value in enumerator(d):
+                d[key] = cls.create(**d[key])
+        except:
+            pass
+        return d
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serializes in csv"""
+        if (list_objs is None or not isinstance(list_objs, list)
+            or not all(isinstance(j, Base) for j in list_objs)):
+            with open(cls.__name__ + ".csv", "w") as file:
+                file.write("[]")
+            if list_objs and any(isinstance(j, Base) for j in list_objs):
+                dict_data = [i.to_dictionary() for i in list_objs]
+                if cls.__name__ == "Rectangle":
+                    csv_columns = ["id", "width", "height", "x", "y"]
+                else:
+                    csv_columns = ["id", "size", "x", "y"]
+                with open(cls.__name__ + ".csv", "w") as file:
+                    writer = csv.DictWriter(file, fieldnames=csv_columns)
+                    writer.writeheader()
+                    for data in dict_data:
+                        writer.writerow(data)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads from csv file"""
+        list_instance = []
+        name = cls.__name__ + ".csv"
+        if os.path.isfile(name):
+            with open(name, "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    d = {key: int(value) for key, value in row.items()}
+                    list_instance.append(cls.create(**d))
+            return list_instance
+        return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws sqaures and rectangles"""
+        for i in list_rectangles + list_squares:
+            tt = turtle.Turtle()
+            tt.shape("turtle")
+            turtle.bgcolor("black")
+            tt.fillcolor("white")
+            tt.begin_fill()
+            tt.pen(fillcolor="white", pencolor="red", pensize=2)
+            for _ in range(2):
+                tt.forward(i.width)
+                tt.right(90)
+                tt.forward(i.height)
+                tt.right(90)
+            tt.end_fill()
+            turtle.done()

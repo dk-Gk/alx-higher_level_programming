@@ -30,7 +30,7 @@ if __name__ == "__main__":
             check_match(line)
             if i % 10 == 0:
                 print_stats()
-                i += 1
+            i += 1
     except KeyboardInterrupt:
         print_stats()
         raise

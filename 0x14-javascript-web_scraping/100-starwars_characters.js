@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const rs = require('request');
-const STAR_WAR = `http://swapi.co/api/films/${process.argv[2]}`;
+const STAR_WAR = `https://swapi-api.hbtn.io/api/films/${process.argv[2]}`;
 rs(STAR_WAR, function (error, response, body) {
   if (error) {
     throw new Error(error);
